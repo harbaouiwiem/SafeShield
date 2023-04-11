@@ -12,23 +12,15 @@ labels = data['result']
 # get features
 features = data.iloc[:, :-1]
 
-# encode the protocol type
-protocolTypeEncoder = LabelEncoder()
-protocolTypeEncoder.fit(features['protocol_type'])
-np.save('encodedProtocol.nps', protocolTypeEncoder.classes_)
-features['protocol_type'] = protocolTypeEncoder.transform(features['protocol_type'])
-
-# service encoder
-serviceEncoder = LabelEncoder()
-serviceEncoder.fit(features['service'])
-np.save('encodedService.nps', serviceEncoder.classes_)
-features['service'] = serviceEncoder.transform(features['service'])
-
-# flag encoder
-flagEncoder = LabelEncoder()
-flagEncoder.fit(features['flag'])
-np.save('encodedFlag.nps', flagEncoder.classes_)
-features['flag'] = flagEncoder.transform(features['flag'])
+# encode the categorical columns
+encoders = {}
+categorical_cols = ['protocol_type', 'service', 'flag']
+for col in categorical_cols:
+    encoder = LabelEncoder()
+    encoder.fit(features[col])
+    np.save(f'encoded{col.capitalize()}.nps', encoder.classes_)
+    features[col] = encoder.transform(features[col])
+    encoders[col] = encoder
 
 # label encoder
 labelEncoder = LabelEncoder()
@@ -42,11 +34,8 @@ targets = np_utils.to_categorical(encoded_Y)
 model = Sequential()
 model.add(Dense(45, activation='relu', input_dim=features.shape[1]))
 model.add(Dense(45, activation='relu'))
-## softmax => sum =1
-model.add(Dense(23, activation='softmax'))
-## adam optimizer => do not use learning rate
+model.add(Dense(targets.shape[1], activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-## train 20 times
 model.fit(features, targets, epochs=20)
 
-model.save('NeuralNetworkTest.h5')
+model.save('NeuralNetwork.h5')

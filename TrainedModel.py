@@ -7,7 +7,6 @@ from sklearn.preprocessing import LabelEncoder
 
 # load data from dataset
 data = pd.read_csv("dataset.csv", delimiter=',')
-
 # get labels
 labels = data['result']
 # get features

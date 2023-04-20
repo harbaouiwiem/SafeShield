@@ -51,4 +51,3 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 model.fit(X_train, y_train, epochs=20, validation_data=(X_val, y_val))
 
 model.save('NeuralNetwork.h5')
-

@@ -9,7 +9,7 @@ from tensorflow.keras.saving import load_model
 from keras.utils import np_utils
 from sklearn.preprocessing import LabelEncoder
 
-mypath = 'C:/Users/21696/Oversight/users/'
+mypath = 'users/'
 # get all users logs
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
@@ -17,7 +17,7 @@ lastIndex = 0
 
 classes = pd.read_csv("classes.csv", delimiter=',')
 for file in files:
-    initialRows = pd.read_csv(mypath +'/'+ file, delimiter=',').iloc[:, :] #AA
+    initialRows = pd.read_csv(mypath +'/'+ file, delimiter=',').iloc[:, :] 
     samples = pd.read_csv(mypath + file, delimiter=',')
 
     print(files)
@@ -68,7 +68,7 @@ for file in files:
     results = model.predict(features)
 
     ##initialize the encoded results
-    encoded_results = np.zeros((results.shape[0], 1), int1)
+    encoded_results = np.zeros((results.shape[0], 1), int)
 
     es = Elasticsearch(['http://elastic:changeme@localhost:9200'])
     delimiterIndex = file.index('.')
@@ -98,4 +98,4 @@ for file in files:
     lastIndex += results.shape[0] + 1
 
 print(lastIndex) 
-2
+

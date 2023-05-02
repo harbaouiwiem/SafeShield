@@ -5,11 +5,11 @@ from os.path import isfile, join
 import numpy as np
 import pandas as pd
 from elasticsearch import Elasticsearch
-from keras.engine.saving import load_model
+from tensorflow.keras.saving import load_model
 from keras.utils import np_utils
 from sklearn.preprocessing import LabelEncoder
 
-mypath = 'users/'
+mypath = 'C:/Users/21696/Oversight/users/'
 # get all users logs
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
@@ -17,7 +17,7 @@ lastIndex = 0
 
 classes = pd.read_csv("classes.csv", delimiter=',')
 for file in files:
-    initialRows = pd.read_csv(mypath + file, delimiter=',').iloc[:, :]
+    initialRows = pd.read_csv(mypath +'/'+ file, delimiter=',').iloc[:, :] #AA
     samples = pd.read_csv(mypath + file, delimiter=',')
 
     print(files)
@@ -25,15 +25,16 @@ for file in files:
     # intialize the labels
     labels = classes['result']
 
-    # initialize the features
+    # initialize the features:
     features = samples.iloc[:, :]
 
-    ##### encode the features (preprocessing)
+    ##### encode the features (preprocessing)   
     #### save np.load
     np_load_old = np.load
 
-    # modify the default parameters of np.load
-    np.load = lambda *a, **k: np_load_old(*a, allow_pickle=True, **k)
+    # modify the default parameters of np.load    
+    np.load = lambda *a, **k: np_load_old(*a, allow_pickle=True, **k) if a[0].endswith('.npy') else np_load_old(*a, **k)
+
 
     # encode the protocol type
     protocolTypeEncoder = LabelEncoder()
@@ -66,12 +67,12 @@ for file in files:
     ###### predict
     results = model.predict(features)
 
-    ##initialize the econded results
-    encoded_results = np.zeros((results.shape[0], 1), int)
+    ##initialize the encoded results
+    encoded_results = np.zeros((results.shape[0], 1), int1)
 
     es = Elasticsearch(['http://elastic:changeme@localhost:9200'])
-    delemiterIndex = file.index('.')
-    userid = file[:delemiterIndex]
+    delimiterIndex = file.index('.')
+    userid = file[:delimiterIndex]
     print('---------------------------------', userid)
     for i in range(results.shape[0]):
         encoded_results[i] = np.argmax(results[i])
@@ -95,4 +96,6 @@ for file in files:
         res = es.get(index="threat", doc_type='tweet', id=id_lig)
         print(res['_source'])
     lastIndex += results.shape[0] + 1
-print(lastIndex)
+
+print(lastIndex) 
+2

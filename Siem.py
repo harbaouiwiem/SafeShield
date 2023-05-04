@@ -5,7 +5,7 @@ from os.path import isfile, join
 import numpy as np
 import pandas as pd
 from elasticsearch import Elasticsearch
-from tensorflow.keras.saving import load_model
+from tensorflow.keras.models import load_model
 from keras.utils import np_utils
 from sklearn.preprocessing import LabelEncoder
 
@@ -88,14 +88,13 @@ for file in files:
         print("--------------------------------------------")
         id_lig = i + lastIndex
         # posting the new threat to index it at elasticsearch
-        res = es.index(index="threat",id=id_lig, document=doc)
+        res = es.index(index="threat",id=int(id_lig), document=doc)
 
         print(res['result'])
 
         # getting the new values of the threat index
-        res = es.get(index="threat", doc_type='tweet', id=id_lig)
+        res = es.get(index="threat", id=id_lig)
         print(res['_source'])
     lastIndex += results.shape[0] + 1
 
 print(lastIndex) 
-

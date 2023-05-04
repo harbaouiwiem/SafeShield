@@ -17,8 +17,8 @@ lastIndex = 0
 
 classes = pd.read_csv("classes.csv", delimiter=',')
 for file in files:
-    initialRows = pd.read_csv(mypath +'/'+ file, delimiter=',').iloc[:, :] 
-    samples = pd.read_csv(mypath + file, delimiter=',')
+    initialRows = pd.read_csv(mypath +'/'+ file, delimiter=',').iloc[:, :] #AA
+    samples = pd.read_csv(mypath +'/'+ file, delimiter=',')
 
     print(files)
 
@@ -85,10 +85,10 @@ for file in files:
         }
         print(labelEncoder.inverse_transform(np.ravel(encoded_results[i])))
         print(initialRows.loc[i, :])
-        print("---------------------")
+        print("--------------------------------------------")
         id_lig = i + lastIndex
         # posting the new threat to index it at elasticsearch
-        res = es.index(index="threat", doc_type='tweet', id=id_lig, body=doc)
+        res = es.index(index="threat",id=id_lig, document=doc)
 
         print(res['result'])
 

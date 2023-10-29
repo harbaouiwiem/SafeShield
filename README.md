@@ -82,16 +82,16 @@ run these services simultaneously ensuring that our IDS and ELK Stack work seaml
  The python used is Python 3.10.2.
  
  first, Start by updating the package list using the following command:
-  'sudo apt update'    
+  '''sudo apt update'''   
 
  install the disutils and setuptools :
-  'sudo apt install python3-distutils python3-setuptools'
+  '''sudo apt install python3-distutils python3-setuptools'''
 
  now install pip3 :
-  'sudo apt install python3-pip'
+  '''sudo apt install python3-pip'''
 
  finally install the libraries needed : 
-  'pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch'
+  '''pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch'''
 
 
 

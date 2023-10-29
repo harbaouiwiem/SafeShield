@@ -23,7 +23,7 @@ then run on Ubuntu.
 In order to enhance the visibility and behaviour analysis, we implemented the ELK stack to 
 provide graphical illustrations.
 
-## Project Components 
+## Project Components: 
 ###Operating system 
 the IDS is deployed on Ubuntu a linux-based OS that is secure and flexible.
 

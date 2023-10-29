@@ -77,6 +77,24 @@ monitoring and visualization of potential security threats using Kibana.
 We utilized Docker to containerize both our Python code and the ELK Stack components to 
 run these services simultaneously ensuring that our IDS and ELK Stack work seamlessly together.
 
+## Code Setup 
+ You need to use git clone command to download this project : 
+ The python used is Python 3.10.2.
+ 
+ first, Start by updating the package list using the following command:
+  'sudo apt update'    
+
+ install the disutils and setuptools :
+  'sudo apt install python3-distutils python3-setuptools'
+
+ now install pip3 :
+  'sudo apt install python3-pip'
+
+ finally install the libraries needed : 
+  'pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch'
+
+
+
 ## Docker Setup:
 
 

@@ -82,23 +82,23 @@ run these services simultaneously ensuring that our IDS and ELK Stack work seaml
 You need to use git clone command to download this project : 
 The python used is Python 3.10.2.
  
-First, Start by updating the package list using the following command:
-  ```
-  sudo apt update
-   ```
-Install the disutils and setuptools :
-  ```
- sudo apt install python3-distutils python3-setuptools
-  ```
-Now install pip3 :
- ``` 
-sudo apt install python3-pip
-  ```
+##### updating the package list :
+```
+$- sudo apt update
+```
+##### Installing the disutils and setuptools :
+```
+$- sudo apt install python3-distutils python3-setuptools
+```
+##### Installing pip3 :
+``` 
+$- sudo apt install python3-pip
+```
 
-Finally install the libraries needed : 
-  ```
- pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch
-  ```
+##### Install the libraries needed : 
+```
+$- pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch
+```
 
 ## Docker Setup:
 As an initial step, Docker serves as a tool for the project deployment. Consequently, configuring
@@ -154,24 +154,25 @@ $- su - ${USER}
 ```
 ## ELK Setup 
 
- after successfully setting up docker in your system, you need to build the ELK stack.
+after successfully setting up docker in your system, you need to build the ELK stack.
 
- first, start docker containers : 
- ```
- $- docker-compose up -d
- ```
- check the elk stack's health, and after running the following command you need to see
- the 3 containers of elasticsearch, logstash and kibana running : 
- ```  
- $- docker ps
- ```
- finally open the kibana dashboard, you need to connect to your localhost on port 5601 :
+##### starting docker containers : 
+```
+$- docker-compose up -d
+```
+##### checking the elk stack's health
+after running the following command you need to see the 3 containers elasticsearch, logstash and kibana running : 
+```  
+$- docker ps
+```
+##### opening the kibana dashboard
+you need to connect to your localhost on port 5601 :
  ```  
  http://localhost:5601
  ```
- after running the last command, the kibana login page should be displayed.
+after running the last command, the kibana login page should be displayed.
     
- username : elastic & password : changeme 
+username : elastic & password : changeme 
 
 
 

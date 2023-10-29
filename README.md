@@ -30,7 +30,7 @@ connection log called network features. It’s used for building and training ou
 network intrusions. It includes various features that help us understand and classify network
 connections as normal or potentially malicious.
 
-  [**Dataset Features :**](https://drive.google.com/file/d/1wL-fa94_UrBMrirEOCV1v3bvMu4gvRrm/view?usp=sharing)
+  [**Dataset Features**](https://drive.google.com/file/d/1wL-fa94_UrBMrirEOCV1v3bvMu4gvRrm/view?usp=sharing)
 
   **Continuous:** This means that a feature is _numerical_ and can take on a range of real-number
   values. These values can be measured on a scale, and they typically represent quantities or

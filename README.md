@@ -82,9 +82,9 @@ run these services simultaneously ensuring that our IDS and ELK Stack work seaml
  The python used is Python 3.10.2.
  
  first, Start by updating the package list using the following command:
-  
-  <b>sudo apt update</b>
-     
+  '''linux
+  sudo apt update
+  '''   
 
  install the disutils and setuptools :
   

@@ -152,6 +152,26 @@ $- sudo usermod -aG docker ${USER}
 ```
 $- su - ${USER}
 ```
+## ELK Setup 
+
+ after successfully setting up docker in your system, you need to build the ELK stack.
+
+ first, start docker containers : 
+ ```
+ $- docker-compose up -d
+ ```
+ check the elk stack's health, and after running the following command you need to see
+ the 3 containers of elasticsearch, logstash and kibana running : 
+ ```  
+ $- docker ps
+ ```
+ finally open the kibana dashboard, you need to connect to your localhost on port 5601 :
+ ```  
+ http://localhost:5601
+ ```
+ after running the last command, the kibana login page should be displayed.
+    
+ username : elastic & password : changeme 
 
 
 

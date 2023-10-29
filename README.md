@@ -43,6 +43,7 @@ connections as normal or potentially malicious.
   Symbolic features are used to represent qualitative data and are typically non-numeric in nature.
 
 The results that our model can predict : [**AttackClasses.csv**](https://github.com/harbaouiwiem/SafeShield/blob/main/AttackClasses.csv)
+You can understand each attack by following this [Link](https://archive.ll.mit.edu/ideval/docs/attackDB.html)
 
 ## Project Components: 
 ### 1. Operating system 
@@ -78,32 +79,79 @@ We utilized Docker to containerize both our Python code and the ELK Stack compon
 run these services simultaneously ensuring that our IDS and ELK Stack work seamlessly together.
 
 ## Code Setup 
- You need to use git clone command to download this project : 
- The python used is Python 3.10.2.
+You need to use git clone command to download this project : 
+The python used is Python 3.10.2.
  
- first, Start by updating the package list using the following command:
-  
-  <b>sudo apt update<b/>
-   
+First, Start by updating the package list using the following command:
+  ```
+  sudo apt update
+   ```
+Install the disutils and setuptools :
+  ```
+ sudo apt install python3-distutils python3-setuptools
+  ```
+Now install pip3 :
+ ``` 
+sudo apt install python3-pip
+  ```
 
- install the disutils and setuptools :
-  
-  <b>sudo apt install python3-distutils python3-setuptools</b>
-  
-
- now install pip3 :
-  
-  <b>sudo apt install python3-pip</b>
-  
-
- finally install the libraries needed : 
-  
-  <b>pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch</b>
-  
-
-
+Finally install the libraries needed : 
+  ```
+ pip3 install numpy pandas scikit-learn tensorflow keras elasticsearch
+  ```
 
 ## Docker Setup:
+As an initial step, Docker serves as a tool for the project deployment. Consequently, configuring
+Docker on our system is essential to establish a seamless working environment.
+
++ You can skip this step if you already have Docker and Docker Compose installed and
+functioning correctly.
++ If you encounter any difficulties during the Docker installation, you can find additional guidance
+and support in [this official documentation link](https://docs.docker.com/engine/install/ubuntu/?fbclid=IwAR0JRdUbtYO2df1fhNxFVT7FgHShykMza1hpBCMc6tXnya34lkO9ZLNQJoY)
+
+##### Updating the system:
+```
+$- sudo apt update
+```
+##### Installing the curl utility:
+```
+$- sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
+##### Downloading the docker packages:
+```
+$- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+##### Adding the downloaded repository:
+```
+$- pip3 install --upgrade requests
+$- sudo add-apt-repository deb [arch=amd64] https://download.docker.com/linux/ubuntu
+bionic stable
+```
+##### Updating the system again:
+```
+$- sudo apt update
+```
+##### Adding the docker-ce cache policy:
+```
+$- apt-cache policy docker-ce docker-compose
+```
+##### Running the install command:
+```
+$- sudo apt install docker-ce docker-compose
+```
+##### Check the docker daemon's status, and the docker-compose version:
+```
+$- sudo systemctl status docker
+$- docker-compose --version
+```
+##### Adding the current user to the docker users group :
+```
+$- sudo usermod -aG docker ${USER}
+```
+##### Checking that the user is added to the group:
+```
+$- su - ${USER}
+```
 
 
 

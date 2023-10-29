@@ -10,3 +10,13 @@ Management)**.
 
 Our motivation was simple: to learn and share our knowledge! As a result, we proudly present
 this project to fellow beginners and students eager to understand the basics of IDS.
+
+## Description:
+We developed a prototype of a deep learning-based intrusion detection system. 
+The model of the IDS processes network-based data inputs, as a result it will distinguish 
+between normal network connections and potential attacks, also it recognizes the attacks and
+categorizes them.
+The IDS was initially a neural-network model, that is developed with python and keras library
+then run on Ubuntu.
+In order to enhance the visibility and behaviour analysis, we implemented the ELK stack to 
+provide graphical illustrations.
